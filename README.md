@@ -86,17 +86,24 @@ docker --version
 * **compose.yaml**
   ```yaml
   services:
-  web:
-    build: .
-    ports:
-      - 8000:5000
-    depends_on:
-      - redis
-  redis:
-    image: "redis:alpine"
+    web:
+      build: .
+      ports:
+        - "8000:5000"
+      depends_on:
+        - redis
+    redis:
+      image: "redis:alpine"
     ```
   Build and run the application
   
   - docker compose up
   - open the application ``http://localhost:8000``
   - docker compose down
+
+  ## what I learned
+
+  * Got hands-on experience spinning up standalone containers like PostgreSQL, configuring environment variables, and mapping container ports to the host machine.
+  * Learned how Docker Compose simplifies running connected services together, using service names (like `redis`) as hostnames so the web app can talk to the cache smoothly.
+  * Practiced writing a `Dockerfile` using lightweight Alpine images to keep container sizes small while installing necessary C dependencies for Python packages.
+  
